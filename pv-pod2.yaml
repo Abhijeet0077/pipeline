@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pv-pod
+spec:
+  volumes:
+    - name: pv-storage
+      persistentVolumeClaim:
+        claimName: notejam2-pv-claim
+  containers:
+    - name: pv-container
+      image: notejam
+      ports:
+        - containerPort: 5432
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/notejam/html"
+          name: pv-storage
+
+

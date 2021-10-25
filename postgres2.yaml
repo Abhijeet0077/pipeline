@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    app: notejam2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notejam2
+  template:
+    metadata:
+      labels:
+        app: notejam2
+    spec:
+      containers:
+      - name: notejam2
+        image: naruto127712/notejam2
+        ports:
+        - containerPort: 8000
